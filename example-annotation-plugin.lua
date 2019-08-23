@@ -53,9 +53,8 @@ local function visitAnnotationNode(node)
     if tex then
       local filename = exportFolder .. "\\viewpoint-" .. id .. ".png"
       id = id + 1
-      io.write("<texture filename=\"" .. filename .. "\">\n")
-      vrExtractBinaryAssets(tex, filename, true, vrNodeGetMetaNode(tex, true))
-      io.write("</texture>\n")     
+      io.write("<texture filename=\"" .. filename .. "\" />\n")
+      vrExtractBinaryAssets(tex, filename, true, vrNodeGetMetaNode(tex, true))   
     end
     io.write("</viewpoint>\n")
   end
