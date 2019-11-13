@@ -1,0 +1,16 @@
+<annotations exported="{{= date}}">
+  {{for _,annotation in ipairs(annotations) do}}
+    <annotation name="{{= annotation.name}}" author="{{= annotation.author}}">
+      {{for _,viewpoint in ipairs(annotation.viewpoints) do}}
+        <viewpoint position="{{= viewpoint.position}}" rotation="{{= viewpoint.rotation}}">
+          <texture filename="{{= viewpoint.image}}" />
+        </viewpoint>
+      {{end}}
+      {{if #annotation.comments then}}
+        {{for _,comment in ipairs(annotation.comments) do}}
+          <comment author="{{= comment.author}}">{{= comment.text}}</comment>
+        {{end}}
+      {{end}}
+    </annotation>
+  {{end}}
+</annotations>

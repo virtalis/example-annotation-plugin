@@ -1,15 +1,22 @@
 # Annotation Exporter
-This is an example implementation of a Visionary Render plugin which exports annotation data from a scene and saves it as XML.
+This is an example implementation of a Visionary Render plugin which exports annotation data from a scene and saves it as either HTML or XML, using a simple template engine (https://github.com/FSMaxB/liluat). This plugin also has a copy of bootstrap (https://getbootstrap.com/) in order to style some HTML components.
 
-Images of the viewpoints associated with each annotation are also saved as .png files in a folder next to the saved XML.
+Images of the viewpoints associated with each annotation are also saved as .png files in a folder next to the saved output files.
+
+The HTML output includes some supplementary files to improve the appearance of the document.
 
 ## Installation
-To install the plugin, download the lua file and use Settings -> Plugins -> Add Plugin to install it into Visionary Render
+To install the plugin, download this repository and use Settings -> Plugins -> Add Plugin to install it into Visionary Render.
+
+If you are unable to directly import the .zip, you may need to extract the contents to `(documents dir)/Visionary Render <version>/plugins` and make sure the outer folder is called "example-annotation-plugin".
 
 ## Usage
 Once installed, this plugin adds a option to the File menu (File -> Export -> Annotation Exporter)
 
-Select this option and specify an output file name.
+Select this option and specify an output file name and type.
+
+## Example HTML Output
+![Example HTML Output](example.png)
 
 ## Example XML Output
 For an XML file saved to `D:\Temp\annotationexport\test1\test1.xml`

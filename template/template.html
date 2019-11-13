@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>{{= title}} - {{= date}}</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+  <head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-dark" style="background-color: #0f0f0f!important;">
+        <a class="navbar-brand" href="#">
+          <img src="logo.png" class="d-inline-block align-top" />
+          {{= title}} - {{= date}}
+        </a>
+      </nav>
+      {{for _,annotation in ipairs(annotations) do}}
+        <div class="container border border-dark">
+          <h3>
+            {{= annotation.name}}
+            <small class="text-muted">{{= annotation.author}}</small>
+          </h3>
+          {{for _,viewpoint in ipairs(annotation.viewpoints) do}}
+            <a href="{{= viewpoint.image}}">
+              <img src="{{= viewpoint.image}}" width="800px" class="img-thumbnail" />
+            </a>
+          {{end}}
+          {{if #annotation.comments then}}
+            <br /><br />
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Author</th>
+                    <th scope="col">Comment</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{for _,comment in ipairs(annotation.comments) do}}
+                    <tr>
+                      <td>{{= comment.author}}</td>
+                      <td>{{= comment.text}}</td>
+                    </tr>
+                  {{end}}
+                </tbody>
+              </table>
+          {{end}}
+        </div>
+        <hr />
+      {{end}}
+    </div>
+  </body>
+</html>
