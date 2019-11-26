@@ -1,13 +1,17 @@
 -- we will use this simple template library to help us write out the data
 local liluat = require("liluat")
 
+-- path to the template
+local templateFolder = 
+  debug.getinfo(1, "S").source:sub(2):match("^.*[/\\]") .. 'template/'
+
 -- define the plugin functions as local functions
 local function name()
   return "Annotation Exporter"
 end
 
 local function version()
-  return "1.0.0"
+  return "1.0.1"
 end
 
 local function init()
@@ -143,7 +147,7 @@ local function export(file, root, scenes, libs, recipePath)
     id = 1
 
     -- compile the template, gather the annotation data, and insert it
-    local template = slurp("template/template." .. exportType)
+    local template = slurp(templateFolder .. 'template.' .. exportType)
     local compiled_template = liluat.compile(template)
     local data = buildData(s)
     local render = liluat.render(compiled_template, data)
@@ -164,7 +168,7 @@ local function export(file, root, scenes, libs, recipePath)
     local extra = extraFiles[exportType]
     if extra and #extra > 0 then
       for _, file in ipairs(extra) do
-        write(exportFolder .. "/" .. file, slurp("template/" .. file))
+        write(exportFolder .. "/" .. file, slurp(templateFolder .. file))
       end
     end
 
